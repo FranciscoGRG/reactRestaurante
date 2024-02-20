@@ -9,5 +9,5 @@ class ReservaSinLogin extends Model
 {
     use HasFactory;
 
-    protected $fillable= ['idEvent', 'nombre', 'email', 'card-owner', 'card-number', 'card-expired'];
+    protected $fillable= ['nombre', 'email', 'card-owner', 'card-number', 'card-expired'];
 }

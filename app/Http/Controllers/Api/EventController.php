@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\ConfirmacionMailable;
 use App\Models\CreditCard;
 use App\Models\Event;
+use App\Models\ReservaSinLogin;
 use App\Models\Table;
 use DateInterval;
 use DateTime;
@@ -147,6 +148,18 @@ class EventController extends Controller
     public function noLoginReserve(Request $request)
     {
         Mail::to($request['email'])->send(new ConfirmacionMailable($request['nombre'], $request['email'], $request['fecha'], "Reserva realizada"));
+
+        $noLogin = [
+            'nombre' => $request['nombre'],
+            'email' => $request['email'],
+            'card-owner' => $request['card-owner'],
+            'card-number' => $request['card-number'],
+            'card-expired' => $request['card-expired']
+        ];
+
+
+        ReservaSinLogin::create($noLogin);
+      
 
         return response()->json($request['id']);
     }

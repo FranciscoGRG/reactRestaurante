@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('reserva_sin_logins', function (Blueprint $table) {
             $table->id();
-            $table->integer("idEvent");
             $table->string('nombre');
             $table->string('email');
             $table->string('card-owner');
