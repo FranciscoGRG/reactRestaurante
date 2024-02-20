@@ -157,7 +157,6 @@ class EventController extends Controller
             'card-expired' => $request['card-expired']
         ];
 
-
         ReservaSinLogin::create($noLogin);
       
 
